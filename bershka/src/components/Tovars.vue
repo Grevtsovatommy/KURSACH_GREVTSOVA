@@ -8,20 +8,12 @@
                     <ul class="nav navbar-nav mr-auto">
 						<div class="dropdown">
 						  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownWomen" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Women
+							Clothes
 						  </button>
-						  <div class="dropdown-menu" aria-labelledby="dropdownWomen" >
-
-									<select  multiple>
-											<option>Coats</option>
-											</select>>
-									
-							<a class="dropdown-item" href="#">Jackets</a>
-							<a class="dropdown-item" href="#">Blazers</a>
+						  <div class="dropdown-menu" aria-labelledby="dropdownWomen" >					
+							<a class="dropdown-item" href="#" @click="filter('Man')">Man</a>
+							<a class="dropdown-item" href="#" @click="filter('Woman')">Woman</a>
 						  </div>
-
-
-
 
 						</div>
                         <div class="dropdown">
@@ -49,17 +41,19 @@
                     <div class="row">
 
 
-                        <div class="col-md-4" v-for="tovar in tovars" v-bind:key="tovar.id">
+                        <div class="col-md-4" v-for="tovar in filtertovars" v-bind:key="tovar.id">
 							<div class="product">
 								<div class="product-img">
 									<a href="#"><img src="assets/img/coats/6457644251_1_1_4.jpg" alt=""></a>
+									<!-- :src="item.photo" -->
 								</div>
 								<p class="product-title">
 									<a href="#">{{tovar.Name}}</a>
 								</p>
 								<div class="product-buy">
 									<p class="product-price">
-										UAH 2,599.00
+										<!-- UAH 2,599.00 -->
+										{{tovar.Price}}
 									</p>
 								</div>
 							</div>
@@ -70,13 +64,13 @@
 					<h3>Men</h3>
 					
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-4" v-for="tovar in tovars" v-bind:key="tovar.id">
 							<div class="product">
 								<div class="product-img">
 									<a href="#"><img src="assets/img/jackets_men/6394086251_1_1_4.jpg" alt=""></a>
 								</div>
 								<p class="product-title">
-									<a href="#">Pouch pocket quilted jacket</a>
+									<a href="#">{{tovar.Name}}</a>
 								</p>
 								<div class="product-buy">
 									<p class="product-price">
@@ -233,11 +227,14 @@
             return {
 				id: 0,
 				name: '',
-				Category: '',
-				tovars: clothes
+				category: '',
+				tovars: clothes,
+				filtertovars: []
+				
             };
         },
         mounted: async function(){
+			this.filtertovars = this.tovars
             // let response = await Vue.axios.get("http://46.101.212.195:3000/students");
             // console.log(response.data)
             // this.students = response.data;
@@ -251,6 +248,13 @@
         },
       
         methods: {
+			filter: function(cat){
+				console.log(this.tovars)
+				this.filtertovars = this.tovars.filter((element) => {
+                    return element.Category == cat;
+				});
+				console.log(this.tovars)
+			}
             // leave: function (el, done) {
             //     Velocity(el, { translateX: '15px', rotateZ: '50deg' }, { duration: 1500 })
             //     Velocity(el, { rotateZ: '100deg' }, { loop: 12 })

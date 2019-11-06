@@ -49,25 +49,25 @@
     {
         id: 8,
         "Name": "Double-sided biker jacket",
-        "Price": "UAH 2,199",
+        "Price": "UAH 777",
         "Category": "Man"
     },
     {
         id: 9,
         "Name": "Corduroy jacket with faux shearling collar",
-        "Price": "UAH 1,599",
+        "Price": "UAH 777",
         "Category": "Man"
     },
     {
         id: 10,
         "Name": "Long puffer jacket with hood",
-        "Price": "UAH 2,999",
+        "Price": "UAH 777",
         "Category": "Man"
     },
     {
         id: 11,
         "Name": "Long checked coat",
-        "Price": "UAH 2,999",
+        "Price": "UAH 777",
         "Category": "Man"
     },
 
